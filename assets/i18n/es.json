@@ -1,0 +1,27 @@
+{
+  "appTitle": "Cinema",
+  
+  "loginView.title": "Login",
+  "loginView.user_label": "Usuario",
+  "loginView.user_label_validate": "No puede estar vacio este campo",
+  "loginView.password_label": "Contraseña",
+  "loginView.password_label_validate": "La contraseña no puede estar vacia",
+  "loginView.button_log_in": "Ingresar",
+  
+  "profile.title": "Perfil",
+  "profile.welcome_label": "Bienvenido",
+  "profile.email_label": "Correo Electronico",
+  "profile.card_label": "Tarjeta",
+  "profile.button_log_out": "Salir",
+  
+  "billboard.title": "Cartelera",
+  
+  "movieDetails.title": "Detalle Pelicula",
+  "movieDetails.name": "Nombre",
+  "movieDetails.rating": "Clasificación",
+  "movieDetails.genre": "Género",
+  "movieDetails.length": "Duración",
+  "movieDetails.synopsis": "Sinopsis",
+  
+  "cinema.title": "Complejo"
+}

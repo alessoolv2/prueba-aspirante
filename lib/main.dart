@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+
+import 'package:test_aspirante_flutter/app.localizations.dart';
 import 'package:test_aspirante_flutter/controllers/providers.controller.dart';
 import 'package:test_aspirante_flutter/controllers/storage.controller.dart';
 import 'package:test_aspirante_flutter/router/navigation.router.dart';
@@ -32,6 +35,15 @@ class _MainAppState extends State<MainApp> {
       child: MaterialApp(
         title: 'Test Aspirante',
         debugShowCheckedModeBanner: false,
+        supportedLocales: [
+          const Locale('es'),
+        ],
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         theme: StyleTheme.theme,
         navigatorKey: router.navigator,
         routes: RoutesRouter.routes,
