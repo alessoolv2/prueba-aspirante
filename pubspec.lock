@@ -190,6 +190,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.10"
+  esys_flutter_share:
+    dependency: "direct main"
+    description:
+      name: esys_flutter_share
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -244,6 +251,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_mobx:
     dependency: "direct main"
     description:
@@ -359,13 +371,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
-  liquid_swipe:
-    dependency: "direct main"
-    description:
-      name: liquid_swipe
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.5.0"
   logging:
     dependency: transitive
     description:
