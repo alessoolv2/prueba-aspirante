@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
+//PhotoHeader
 class PhotoHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

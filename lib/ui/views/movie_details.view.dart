@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional_switch.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
+import 'package:test_aspirante_flutter/app.localizations.dart';
 import 'package:test_aspirante_flutter/controllers/billboard.controller.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 import 'package:test_aspirante_flutter/ui/widgets/item_details_cinema.widget.dart';
@@ -38,15 +39,26 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
       },
       child: Scaffold(
         backgroundColor: Colors.white,
+
+        //AppBar
         appBar: AppBar(
           backgroundColor: StyleTheme.primaryColor,
-          title: const Text('Detalles de Pelicula'),
+          title: Text(AppLocalizations.of(context).translate('movieDetails.title')),
+
+          //BackButton
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
               billboardController.goBack();
             },
           ),
+          //ShareButton
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.share),
+              onPressed: billboardController.shareMovie,
+            ),
+          ],
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -54,6 +66,8 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+
+                //Video media
                 Container(
                   margin: const EdgeInsets.only(bottom: 12.0),
                   child: Observer(builder: (_) => ConditionalSwitch.single<FutureStatus>(
@@ -68,24 +82,33 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                   ),
                 ),
 
+                //Name label
                 ItemDetailsCinema(
-                  title: 'Nombre',
+                  title: AppLocalizations.of(context).translate('movieDetails.name'),
                   text: '${billboardController.movie.name}',
                 ),
+
+                //Rating label
                 ItemDetailsCinema(
-                  title: 'Clasificación',
+                  title:  AppLocalizations.of(context).translate('movieDetails.rating'),
                   text: '${billboardController.movie.rating}',
                 ),
+
+                //Genre label
                 ItemDetailsCinema(
-                  title: 'Género',
+                  title:  AppLocalizations.of(context).translate('movieDetails.genre'),
                   text: '${billboardController.movie.genre}',
                 ),
+
+                //Length label
                 ItemDetailsCinema(
-                  title: 'Duración',
+                  title:  AppLocalizations.of(context).translate('movieDetails.length'),
                   text: '${billboardController.movie.length}',
                 ),
+
+                //Synopsis label
                 ItemDetailsCinema(
-                  title: 'Sinopsis',
+                  title:  AppLocalizations.of(context).translate('movieDetails.synopsis'),
                   text: '${billboardController.movie.synopsis}',
                 ),
               ],

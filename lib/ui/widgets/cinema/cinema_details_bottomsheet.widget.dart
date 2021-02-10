@@ -3,6 +3,8 @@ import 'package:test_aspirante_flutter/controllers/cinema.controller.dart';
 import 'package:test_aspirante_flutter/model/cinemas.model.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
+
+//BottomSheet dialog for Marker
 class CinemaDetailsBottomSheet {
   CinemaDetailsBottomSheet(this.context, this.cinemaModel);
 
@@ -48,7 +50,7 @@ class CinemaDetailsBottomSheet {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                               Container(
-                                margin: const EdgeInsets.only(bottom: 6.0, top:6.0, left: 12.0, right: 12.0),
+                                margin: const EdgeInsets.only(bottom: 6.0, top:12.0, left: 12.0, right: 12.0),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [

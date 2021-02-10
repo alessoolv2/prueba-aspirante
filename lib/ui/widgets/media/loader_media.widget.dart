@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Loader video
 class LoaderMedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

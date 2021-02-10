@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
+//Item for cinema label
 class ItemDetailsCinema extends StatelessWidget {
 
   const ItemDetailsCinema({Key key, @required this.text, @required this.title}) : super(key: key);

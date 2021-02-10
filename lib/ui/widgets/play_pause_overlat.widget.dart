@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:video_player/video_player.dart';
 
+//Controls for video
 class PlayPauseOverlay extends StatefulWidget {
   const PlayPauseOverlay({@required this.controller});
 

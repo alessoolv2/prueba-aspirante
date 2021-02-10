@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
+//Loader item settings
 class ShimmerItemSettings extends StatelessWidget {
   const ShimmerItemSettings({Key key, this.title}) : super(key: key);
 

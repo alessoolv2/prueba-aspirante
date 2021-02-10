@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'grid_view_item_shimmer.widget.dart';
+
+//Loader billboard list
 class ShimmerListBillboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

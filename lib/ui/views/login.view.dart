@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:test_aspirante_flutter/app.localizations.dart';
 import 'package:test_aspirante_flutter/controllers/login.controller.dart';
-import 'package:test_aspirante_flutter/model/login.model.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
 class LoginView extends StatefulWidget {
@@ -35,25 +35,25 @@ class _LoginViewState extends State<LoginView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
+                  //Title
                   Container(
                     margin: const EdgeInsets.only(top: 27, left: 17),
-                    child: const Text(
-                      'Login',
+                    child: Text(AppLocalizations.of(context)
+                        .translate('loginView.title'),
                       textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.w300,
-                        fontSize: 24,
-                      ),
+                      style: StyleTheme.theme.textTheme.headline6.copyWith(fontFamily: StyleTheme.ROBOTO),
                     ),
                   ),
 
+                  //AppName
                   Container(
                     margin: const EdgeInsets.only(top: 27),
                     width: MediaQuery.of(context).size.width,
                     alignment: Alignment.center,
                     child: Text(
-                      'Cinema',
+                      AppLocalizations.of(context)
+                          .translate('appTitle'),
                       textAlign: TextAlign.left,
                       style: StyleTheme.theme.textTheme.headline3,
                     ),
@@ -65,7 +65,7 @@ class _LoginViewState extends State<LoginView> {
                           child: FocusScope(
                             node: _controller.node,
                             child: Column(
-                              children: [
+                              children: <Widget>[
                                 //User
                                 Container(
                                   margin: const EdgeInsets.only(
@@ -76,20 +76,17 @@ class _LoginViewState extends State<LoginView> {
                                     textInputAction: TextInputAction.next,
                                     autofillHints: [AutofillHints.email],
                                     onEditingComplete: _controller.node.nextFocus,
-                                    decoration: const InputDecoration(
-                                      contentPadding:
-                                      EdgeInsets.symmetric(vertical: 2.0),
+                                    decoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2.0),
                                       isDense: true,
-                                      labelText: 'Usuario',
-                                      labelStyle: TextStyle(
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 15,
-                                      ),
+                                      labelText: AppLocalizations.of(context)
+                                          .translate('loginView.user_label'),
+                                      labelStyle: StyleTheme.theme.textTheme.headline4,
                                     ),
                                     validator: (value) {
                                       if (!_controller.validUser(value)) {
-                                        return 'No puede estar vacio este campo';
+                                        return AppLocalizations.of(context)
+                                            .translate('loginView.user_label_validate');
                                       }
                                       return null;
                                     },
@@ -111,20 +108,17 @@ class _LoginViewState extends State<LoginView> {
                                     textInputAction: TextInputAction.done,
                                     autofillHints: [AutofillHints.password],
                                     onEditingComplete: _controller.node.nextFocus,
-                                    decoration: const InputDecoration(
-                                      contentPadding:
-                                      EdgeInsets.symmetric(vertical: 2.0),
+                                    decoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2.0),
                                       isDense: true,
-                                      labelText: 'Contraseña',
-                                      labelStyle: TextStyle(
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 15,
-                                      ),
+                                      labelText: AppLocalizations.of(context)
+                                          .translate('loginView.password_label'),
+                                      labelStyle: StyleTheme.theme.textTheme.headline4,
                                     ),
                                     validator: (value) {
                                       if (value.isEmpty) {
-                                        return 'La contraseña no puede estar vacia';
+                                        return AppLocalizations.of(context)
+                                            .translate('loginView.password_label_validate');
                                       }
                                       return null;
                                     },
@@ -142,26 +136,21 @@ class _LoginViewState extends State<LoginView> {
                       ),
                   ),
 
-                  // Divider
-                  Container(
-                    height: 1.5,
-                    margin:
-                    const EdgeInsets.only(top: 17, left: 16, right: 16),
-                    child: const Divider(),
-                  ),
                 ],
               ),
             ),
+
+            //SingIn button
             bottomNavigationBar: Container(
               width: MediaQuery.of(context).size.width,
               height: 35,
               margin:
               const EdgeInsets.only(top: 17, left: 16, right: 16, bottom: 20),
               child: RaisedButton(
-                  child: const Text(
-                    'Ingresar',
+                  child: Text(
+                    AppLocalizations.of(context)
+                        .translate('loginView.button_log_in'),
                   ),
-                  color: Colors.blue,
                   textColor: Colors.white,
                   onPressed:() {
                     if (_controller.formKey.currentState.validate()) {

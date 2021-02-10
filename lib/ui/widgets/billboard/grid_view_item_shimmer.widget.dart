@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+//Item billboard loader
 class GridViewItemShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

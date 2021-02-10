@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
+//Generic dialog loader
 class Loader {
 
   static Future<dynamic> show(BuildContext context) {

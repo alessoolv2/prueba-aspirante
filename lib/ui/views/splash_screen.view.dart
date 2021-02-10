@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_aspirante_flutter/app.localizations.dart';
 import 'package:test_aspirante_flutter/router/navigation.router.dart';
 import 'package:test_aspirante_flutter/router/routes.router.dart';
 import 'package:test_aspirante_flutter/stores/database/user.database.dart';
@@ -31,6 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
     });
     super.didChangeDependencies();
   }
+
+  //SplashScreen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +43,11 @@ class _SplashScreenState extends State<SplashScreen> {
           margin: const EdgeInsets.only(top: 27),
           width: MediaQuery.of(context).size.width,
           alignment: Alignment.center,
+
+          //AppName
           child: Text(
-            'Cinema',
+            AppLocalizations.of(context)
+                .translate('appTitle'),
             textAlign: TextAlign.left,
             style: StyleTheme.theme.textTheme.headline3.copyWith(color: Colors.white, fontSize: 48.0),
           ),

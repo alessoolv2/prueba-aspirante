@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
 import 'package:mobx/mobx.dart';
 
 part 'pages.store.g.dart';
@@ -14,8 +13,7 @@ abstract class _PagesStore with Store {
   @observable
   PageController controller;
 
-  @observable
-  LiquidController liquidController;
+
 
   @action
   void changePage(int index) {
@@ -30,7 +28,6 @@ abstract class _PagesStore with Store {
     controller = PageController(
       initialPage: currentPage,
     );
-    liquidController = LiquidController();
   }
 
 

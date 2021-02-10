@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:test_aspirante_flutter/app.localizations.dart';
 import 'package:test_aspirante_flutter/controllers/home.controller.dart';
 import 'package:test_aspirante_flutter/ui/views/billboard.view.dart';
 import 'package:test_aspirante_flutter/ui/views/cinema.view.dart';
@@ -22,6 +23,8 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       body: SafeArea(
         child: Observer(
+
+          //Stack of views
           builder: (_) => IndexedStack(
             index: _controller.pagesStore.currentPage,
             children: [
@@ -37,26 +40,27 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
+
+      //BottomNavigationBar
       bottomNavigationBar: Observer(
         builder: (_) => BottomNavigationBar(
           currentIndex: _controller.pagesStore.currentPage,
           items: [
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle),
-              label: 'Perfil',
+            BottomNavigationBarItem(
+                icon: const Icon(Icons.account_circle),
+              label: AppLocalizations.of(context).translate('profile.title'),
 
             ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.movie),
-              label: 'Cartelera',
-
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.movie),
+              label: AppLocalizations.of(context).translate('billboard.title'),
             ),
-            const  BottomNavigationBarItem(
-              icon: Icon(Icons.store),
-              label: 'Complejo',
+             BottomNavigationBarItem(
+              icon: const Icon(Icons.store),
+              label: AppLocalizations.of(context).translate('cinema.title'),
             ),
           ],
-          onTap: (index) {
+          onTap: (int index) {
             if(index == 1){
               _controller.billboardStore.setIndex(-1);
             }

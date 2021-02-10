@@ -39,21 +39,6 @@ mixin _$PagesStore on _PagesStore, Store {
     });
   }
 
-  final _$liquidControllerAtom = Atom(name: '_PagesStore.liquidController');
-
-  @override
-  LiquidController get liquidController {
-    _$liquidControllerAtom.reportRead();
-    return super.liquidController;
-  }
-
-  @override
-  set liquidController(LiquidController value) {
-    _$liquidControllerAtom.reportWrite(value, super.liquidController, () {
-      super.liquidController = value;
-    });
-  }
-
   final _$_PagesStoreActionController = ActionController(name: '_PagesStore');
 
   @override
@@ -82,8 +67,7 @@ mixin _$PagesStore on _PagesStore, Store {
   String toString() {
     return '''
 currentPage: ${currentPage},
-controller: ${controller},
-liquidController: ${liquidController}
+controller: ${controller}
     ''';
   }
 }

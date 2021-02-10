@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
+//Item for billboard list
 class GridViewItem extends StatelessWidget {
 
   const GridViewItem({Key key, this.title, this.condition, this.imageUrl, this.onTap, this.mediaLoadImage = 'assets/images/loader_icons/media_load.png', this.imageFit = BoxFit.cover, this.sizeHeight = 0}) : super(key: key);

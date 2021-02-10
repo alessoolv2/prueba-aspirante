@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:test_aspirante_flutter/app.localizations.dart';
 import 'package:test_aspirante_flutter/controllers/cinema.controller.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
@@ -44,6 +45,8 @@ class _CinemaViewState extends State<CinemaView> {
         height: MediaQuery.of(context).size.height,
         child: Stack(
           children: <Widget>[
+
+            //Map
             GoogleMap(
               mapType: MapType.normal,
               initialCameraPosition: CinemaController.cameraPosition,
@@ -52,13 +55,15 @@ class _CinemaViewState extends State<CinemaView> {
               },
               markers: controller.markers,
             ),
+
+            //Title
             Container(
               width: MediaQuery.of(context).size.width,
               color: Colors.white.withOpacity(0.6),
               child: Container(
                 margin: const EdgeInsets.only(left: 16.0, bottom: 4.0, top: 16.0),
                 child: Text(
-                  'Complejos',
+                  AppLocalizations.of(context).translate('cinema.title'),
                   style: StyleTheme.theme.textTheme.headline5,
                 ),
               ),

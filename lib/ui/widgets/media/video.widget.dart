@@ -3,6 +3,7 @@ import 'package:test_aspirante_flutter/controllers/billboard.controller.dart';
 import 'package:test_aspirante_flutter/ui/widgets/play_pause_overlat.widget.dart';
 import 'package:video_player/video_player.dart';
 
+//Video widget
 class Video extends StatefulWidget {
   @override
   _VideoState createState() => _VideoState();

@@ -39,8 +39,7 @@ class CinemaController {
               position: LatLng(double.parse(model.lat), double.parse(model.lng)),
               icon: markerLocationIcon,
               onTap: () {
-                print(model.id);
-                CinemaDetailsBottomSheet(context,model).show();
+                CinemaDetailsBottomSheet(context, model).show();
               }
           ),
         );

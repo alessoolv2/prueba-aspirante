@@ -3,6 +3,7 @@ import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:flutter_conditional_rendering/conditional_switch.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
+import 'package:test_aspirante_flutter/app.localizations.dart';
 import 'package:test_aspirante_flutter/controllers/profile.controller.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 import 'package:test_aspirante_flutter/ui/widgets/item.settings.widget.dart';
@@ -35,63 +36,70 @@ class _ProfileViewState extends State<ProfileView> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
+
+            //Title
             Container(
               margin: const EdgeInsets.only(left: 16.0, bottom: 4.0, top: 16.0),
               child: Text(
-                'Perfil',
+                AppLocalizations.of(context).translate('profile.title'),
                 style: StyleTheme.theme.textTheme.headline5,
               ),
             ),
+
+            //Profile photo header
             PhotoHeader(),
 
+
+            //Welcome label
             Observer(builder: (_) => ConditionalSwitch.single<FutureStatus>(
               context: context,
               valueBuilder: (BuildContext context) => profileController.profileStore.loadProfileFuture.status,
               caseBuilders: {
-                FutureStatus.rejected: (BuildContext context) => const ShimmerItemSettings(title: 'Bienvenido',),
+                FutureStatus.rejected: (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.welcome_label'),),
                 FutureStatus.fulfilled: (BuildContext context) => Conditional.single(
                   context: context,
                   conditionBuilder: (BuildContext context) => profileController.profileStore.profileViewModel.success,
-                  widgetBuilder: (BuildContext context) => ItemSettings(title: 'Bienvenido',text: '${profileController.fullName}', icon: Icons.account_circle,),
-                  fallbackBuilder: (BuildContext context) =>  const ShimmerItemSettings(title: 'Bienvenido',),
+                  widgetBuilder: (BuildContext context) => ItemSettings(title: AppLocalizations.of(context)
+                      .translate('profile.welcome_label'),text: '${profileController.fullName}', icon: Icons.account_circle,),
+                  fallbackBuilder: (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.welcome_label'),),
                 ),
               },
-              fallbackBuilder:  (BuildContext context) => const ShimmerItemSettings(title: 'Bienvenido',),
+              fallbackBuilder:  (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.welcome_label'),),
             ),),
 
-
+            //Email label
             Observer(builder: (_) => ConditionalSwitch.single<FutureStatus>(
               context: context,
               valueBuilder: (BuildContext context) => profileController.userStore.loadLoginFuture.status,
               caseBuilders: {
-                FutureStatus.rejected: (BuildContext context) => const ShimmerItemSettings(title: 'Correo Electronico',),
+                FutureStatus.rejected: (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.email_label'),),
                 FutureStatus.fulfilled: (BuildContext context) {
                   return Conditional.single(
                     context: context,
                     conditionBuilder: (BuildContext context) => profileController.profileStore.profileViewModel.success,
-                    widgetBuilder: (BuildContext context) => ItemSettings(title: 'Correo Electronico',text: '${profileController.userStore.loginViewModel.data.username}', icon: Icons.email),
-                    fallbackBuilder: (BuildContext context) =>  const ShimmerItemSettings(title: 'Correo Electronico',),
+                    widgetBuilder: (BuildContext context) => ItemSettings(title: AppLocalizations.of(context).translate('profile.email_label'),text: '${profileController.userStore.loginViewModel.data.username}', icon: Icons.email),
+                    fallbackBuilder: (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.email_label'),),
                   );
                 }
               },
-              fallbackBuilder:  (BuildContext context) => const ShimmerItemSettings(title: 'Correo Electronico',),
+              fallbackBuilder:  (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.email_label'),),
             ),),
 
-
+            //Card label
             Observer(builder: (_) =>  ConditionalSwitch.single<FutureStatus>(
               context: context,
               valueBuilder: (BuildContext context) => profileController.profileStore.loadProfileFuture.status,
               caseBuilders: {
-                FutureStatus.rejected: (BuildContext context) => const ShimmerItemSettings(title: 'Tarjeta',),
+                FutureStatus.rejected: (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.card_label'),),
                 FutureStatus.fulfilled: (BuildContext context) => Conditional.single(
                   context: context,
                   conditionBuilder: (BuildContext context) => profileController.profileStore.profileViewModel.success,
-                  widgetBuilder: (BuildContext context) => ItemSettings(title: 'Tarjeta',text: '${profileController.profileStore.profileViewModel.data.cardNumber}', icon: Icons.account_balance_wallet_outlined),
-                  fallbackBuilder: (BuildContext context) =>  const ShimmerItemSettings(title: 'Tarjeta',),
+                  widgetBuilder: (BuildContext context) => ItemSettings(title:AppLocalizations.of(context).translate('profile.card_label'), text: '${profileController.profileStore.profileViewModel.data.cardNumber}', icon: Icons.account_balance_wallet_outlined),
+                  fallbackBuilder: (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.card_label'),),
                 ),
               },
-              fallbackBuilder:  (BuildContext context) => const ShimmerItemSettings(title: 'Bienvenido',),
+              fallbackBuilder:  (BuildContext context) => ShimmerItemSettings(title: AppLocalizations.of(context).translate('profile.card_label'),),
              ),
             ),
 
@@ -100,6 +108,8 @@ class _ProfileViewState extends State<ProfileView> {
           ],
         ),
       ),
+
+      //LogOut button
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
         height: 35,
@@ -107,7 +117,7 @@ class _ProfileViewState extends State<ProfileView> {
             left: 15, right: 15, top: 10, bottom: 50),
         child: RaisedButton(
           child: Text(
-            'Salir',
+            AppLocalizations.of(context).translate('profile.button_log_out'),
             style: StyleTheme.theme.textTheme.headline4.copyWith(color: Colors.red),
           ),
           color: Colors.white,

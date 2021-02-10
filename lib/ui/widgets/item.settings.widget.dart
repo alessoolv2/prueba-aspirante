@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 
+//Label item for settings
 class ItemSettings extends StatelessWidget {
 
   const ItemSettings({Key key, @required this.text, @required this.title, @required this.icon}) : super(key: key);
