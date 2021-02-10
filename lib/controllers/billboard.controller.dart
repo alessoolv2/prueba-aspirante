@@ -1,3 +1,8 @@
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_aspirante_flutter/model/billboard.model.dart';
@@ -15,6 +20,10 @@ class BillboardController {
   final BuildContext context;
   final BillboardStore billboardStore;
   final NavigatorRouter navigatorRouter = NavigatorRouter();
+
+  static String imageUrl(String image) => '${Settings.MEDIA_URL}$image';
+
+  static String _imageUrlLarge(String image) => '${Settings.MEDIA_URL_LARGE}$image';
 
   Future<BillboardViewModel> getBillboard() => billboardStore.billboard(context);
 
@@ -47,7 +56,18 @@ class BillboardController {
     else {
       movie =  movies[0];
     }
+  }
 
+  Future<void> shareMovie() async {
+    billboardStore.resetController();
+    try {
+      final HttpClientRequest request = await HttpClient().getUrl(Uri.parse(_imageUrlLarge(movie.media[0].resource)));
+      final HttpClientResponse response = await request.close();
+      final Uint8List bytes = await consolidateHttpClientResponseBytes(response);
+      await Share.file(movie.name, "${movie.name.replaceAll(' ', '_')}.jpg", bytes, 'image/jpg');
+    } catch (e) {
+      print('error: $e');
+    }
   }
 
 }

@@ -3,9 +3,9 @@ import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:flutter_conditional_rendering/conditional_switch.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
+import 'package:test_aspirante_flutter/app.localizations.dart';
 import 'package:test_aspirante_flutter/controllers/billboard.controller.dart';
 import 'package:test_aspirante_flutter/model/billboard.model.dart';
-import 'package:test_aspirante_flutter/settings.dart';
 import 'package:test_aspirante_flutter/themes/style.theme.dart';
 import 'package:test_aspirante_flutter/ui/widgets/billboard/grid_view_item.widget.dart';
 import 'package:test_aspirante_flutter/ui/widgets/billboard/shimmer_list_billboard.widget.dart';
@@ -28,8 +28,7 @@ class _BillboardState extends State<BillboardView> {
     super.didChangeDependencies();
   }
 
-  String imageUrl(String image) => '${Settings.MEDIA_URL}$image';
-
+  //GetList of items in billboard
   List<Widget> getList({Function onTap,}){
     final List<Movie> data = billboardController.billboardStore.billboardViewModel.data.movies;
     return List<GridViewItem>.generate(
@@ -37,7 +36,7 @@ class _BillboardState extends State<BillboardView> {
       final Movie movieModel = data[index];
       return GridViewItem(
         title: movieModel.name,
-        imageUrl: imageUrl(movieModel.media[0].resource),
+        imageUrl: BillboardController.imageUrl(movieModel.media[0].resource),
         onTap:() => onTap(index),
         condition: true,
       );
@@ -52,14 +51,17 @@ class _BillboardState extends State<BillboardView> {
         margin: const EdgeInsets.only(top: 16.0),
         child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
+
+            //Title
             Container(
               margin: const EdgeInsets.only(left: 16.0, bottom: 4.0),
               child: Text(
-                'Cartelera',
+                AppLocalizations.of(context).translate('billboard.title'),
                 style: StyleTheme.theme.textTheme.headline5,
               ),
             ),
+            //List of billboard
             Observer(
               builder: (_) => ConditionalSwitch.single<FutureStatus>(
                 context: context,
