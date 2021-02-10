@@ -1,0 +1,63 @@
+name: test_aspirante_flutter
+description: Test aspirante en Flutter
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.0
+  mobx: ^1.2.1+4
+  flutter_mobx: ^1.1.0+2
+  provider: ^4.3.3
+  dio: ^3.0.10
+  shimmer: ^1.1.2
+  flutter_conditional_rendering: ^1.1.1
+  cached_network_image: ^2.5.0
+  video_player: ^1.0.1
+  liquid_swipe: 1.5.0
+  get_it: ^4.0.4
+  path_provider: ^1.6.27
+  sqflite: ^1.3.0
+  google_maps_flutter: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^1.10.13
+  mobx_codegen: ^1.1.2
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/loader_icons/
+
+  fonts:
+    - family: DancingScript
+      fonts:
+          - asset: assets/fonts/DancingScript-Regular.otf
+            style: normal
+    - family: Proxima-Nova
+      fonts:
+        - asset: assets/fonts/Proxima-Nova-Regular.otf
+          style: normal
+        - asset: assets/fonts/Proxima-Nova-Bold.otf
+          style: normal
+        - asset: assets/fonts/Proxima-Nova-Light.otf
+          style: normal
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+          style: normal
+        - asset: assets/fonts/Roboto-Bold.ttf
+          style: normal
+        - asset: assets/fonts/Roboto-Light.ttf
+          style: normal
